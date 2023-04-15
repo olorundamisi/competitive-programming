@@ -15,7 +15,7 @@ int main(void)
 		int64_t k; cin >> k;
 		for ( ; res <= k; ++res) {
 			if (res % 3 == 0 || res % 10 == 3)
-				k++;
+				++k;
 		}
 
 		cout << res - 1 << '\n';
