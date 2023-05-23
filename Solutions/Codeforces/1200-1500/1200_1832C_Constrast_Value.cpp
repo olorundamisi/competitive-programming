@@ -24,19 +24,14 @@ int main(void)
 
 		if (n == 1) { cout << "1\n"; continue; }
 
-		vector<int64_t> B;
-
-		B.push_back(A[0]);
+		int64_t res = 2;
 		for (int64_t i = 1; i < n - 1; ++i) {
-			if	   (A[i] < A[i - 1] && A[i + 1] < A[i] ||
-					A[i] > A[i - 1] && A[i + 1] > A[i]) {
-				continue; }
-
-			B.push_back(A[i]);
+			if (A[i] < A[i - 1] && A[i + 1] < A[i] || A[i] > A[i - 1] && A[i + 1] > A[i])
+				continue;
+			++res;
 		}
-		B.push_back(A[n - 1]);
 
-		cout << B.size() << '\n';
+		cout << res << '\n';
 	}
  
 	return 0;
