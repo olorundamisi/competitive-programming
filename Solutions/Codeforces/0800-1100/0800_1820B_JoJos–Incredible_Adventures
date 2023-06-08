@@ -1,0 +1,37 @@
+#include <bits/stdc++.h>
+
+#define INF 1E9
+
+using namespace std;
+
+int main(void)
+{
+	ios_base::sync_with_stdio(false), cin.tie(nullptr);
+
+	int64_t num_of_test_cases; cin >> num_of_test_cases;
+	for (int64_t case_num = 1; case_num <= num_of_test_cases; ++case_num) {
+		string s; cin >> s;
+
+		int64_t res = 0, n = s.size();
+		for (int64_t i = 0; i < n; ++i) {
+			if (s[i] == '1') {
+				int64_t j = 0, it = i;
+				while (s[it % n] == '1') {
+					++j, ++it;
+					if (i == it % n) break;
+				}
+				i = it - 1;
+
+				int64_t c = 0;
+				if (j == n) c = n * n;
+				else if (j % 2 == 1) c = ((j + 1) / 2) * ((j + 1) / 2);
+				else c = (j / 2) * ((j / 2) + 1);
+
+				res = max(res, c);
+			}
+		}
+		cout << res << '\n';
+	}
+
+	return 0;
+}
